@@ -1,0 +1,11 @@
+Colocá aquí tu archivo MP3 de "Perfect" de Ed Sheeran.
+
+El nombre debe ser exactamente:
+
+perfect-ed-sheeran.mp3
+
+La página intentará reproducirlo cuando el invitado pulse "Abrir invitación".
+También aparecerá un botón flotante abajo a la derecha para pausar/reanudar.
+
+IMPORTANTE:
+Usá un archivo de audio que tengas derecho a utilizar.

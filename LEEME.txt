@@ -1,0 +1,40 @@
+INVITACIÓN RAMIRO & VALENTINA
+
+Datos cargados:
+- Ramiro & Valentina
+- 29/01/2027
+- Moa's Eventos
+- RP347 Km 2,1, El Cadillal, Tucumán
+- Dress code: Elegante
+- Prohibido rojo y blanco
+- Contactos: 3858687316 / 3012070155
+- Fotos personales incluidas
+
+IMPORTANTE:
+Los botones de WhatsApp fueron configurados asumiendo números argentinos
+con prefijo internacional +54 9. Revisar especialmente el segundo número
+si pertenece a otro país o necesita otro código de área.
+
+Todavía faltan, si quieren agregarlos:
+- Horario de la fiesta
+- Ceremonia (si desean mostrarla)
+- Fecha límite para confirmar asistencia
+- Música
+- Datos para regalos / alias
+
+
+MÚSICA
+------
+La invitación ya está configurada para "Perfect" de Ed Sheeran.
+Copiá tu archivo MP3 dentro de la carpeta /music con este nombre exacto:
+
+perfect-ed-sheeran.mp3
+
+La canción comenzará al tocar "Abrir invitación" y podrá pausarse
+con el botón flotante de música.
+
+
+MÚSICA DESDE EL SEGUNDO 15
+--------------------------
+Al tocar "Abrir invitación", la canción comienza inmediatamente,
+pero desde el segundo 15 del archivo MP3.

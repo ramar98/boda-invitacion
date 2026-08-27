@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#78856e">
+  <title>Ramiro & Valentina | Nuestra Boda</title>
+  <meta name="description" content="Invitación a la boda de Ramiro y Valentina - 29 de enero de 2027">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --green:#78856e;
+      --green-dark:#3c493a;
+      --sage:#b8c1af;
+      --cream:#f4f0e7;
+      --paper:#fbf8f2;
+      --ink:#2f352d;
+      --muted:#697165;
+      --line:rgba(60,73,58,.20);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:"Montserrat",sans-serif;
+      font-weight:300;
+      overflow-x:hidden;
+    }
+    body.locked{overflow:hidden}
+    h1,h2,h3,.serif{font-family:"Cormorant Garamond",serif}
+    a{text-decoration:none;color:inherit}
+    img{display:block;width:100%}
+    button{font:inherit}
+
+    .opening{
+      position:fixed;
+      inset:0;
+      z-index:100;
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      padding:24px;
+      color:#fff;
+      background:
+        linear-gradient(rgba(28,36,27,.36),rgba(28,36,27,.62)),
+        url("images/foto_01.jpeg") center 42% / cover no-repeat;
+      transition:opacity .8s ease,visibility .8s ease;
+    }
+    .opening.hidden{opacity:0;visibility:hidden}
+    .opening-card{
+      width:min(92vw,540px);
+      text-align:center;
+      padding:62px 28px;
+      border:1px solid rgba(255,255,255,.62);
+      background:rgba(255,255,255,.06);
+      backdrop-filter:blur(3px);
+    }
+
+    .eyebrow{
+      font-size:.72rem;
+      letter-spacing:.27em;
+      text-transform:uppercase;
+      font-weight:500;
+    }
+    .opening h1{
+      font-size:clamp(3.5rem,11vw,6rem);
+      line-height:.8;
+      font-weight:400;
+      margin:20px 0 8px;
+    }
+    .amp{font-style:italic;font-weight:400}
+    .date-line{
+      margin:24px 0 32px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      font-size:.78rem;
+    }
+    .btn{
+      display:inline-block;
+      border:1px solid currentColor;
+      background:transparent;
+      padding:14px 22px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:.7rem;
+      cursor:pointer;
+      transition:.25s ease;
+    }
+    .btn:hover{background:var(--green-dark);border-color:var(--green-dark);color:#fff}
+    .opening .btn:hover{background:#fff;color:var(--green-dark);border-color:#fff}
+
+    .hero{
+      min-height:100svh;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      background:var(--cream);
+    }
+    .hero-image{
+      min-height:720px;
+      background:url("images/foto_05.jpeg") center 40% / cover no-repeat;
+    }
+    .hero-copy{
+      display:grid;
+      place-items:center;
+      padding:72px 7vw;
+      text-align:center;
+    }
+    .hero-inner{max-width:570px}
+    .hero h2{
+      margin:14px 0;
+      font-size:clamp(4rem,8vw,7rem);
+      line-height:.78;
+      font-weight:400;
+      color:var(--green-dark);
+    }
+    .ornament{
+      width:62px;height:1px;background:var(--green);
+      margin:30px auto;
+      position:relative;
+    }
+    .ornament:after{
+      content:"✦";
+      position:absolute;
+      left:50%;top:50%;
+      transform:translate(-50%,-50%);
+      background:var(--cream);
+      color:var(--green);
+      padding:0 10px;
+    }
+    .intro{
+      font-size:.95rem;
+      line-height:1.9;
+      color:#5c6558;
+    }
+
+    section{padding:96px 22px}
+    .inner{width:min(1080px,100%);margin:auto}
+    .section-title{
+      text-align:center;
+      font-size:clamp(3.1rem,7vw,5.5rem);
+      line-height:.95;
+      font-weight:400;
+      color:var(--green-dark);
+      margin:0 0 14px;
+    }
+    .section-subtitle{
+      max-width:680px;
+      margin:0 auto 52px;
+      text-align:center;
+      line-height:1.8;
+      color:var(--muted);
+    }
+
+    .countdown-section{background:var(--green);color:#fff}
+    .countdown-section .section-title{color:#fff}
+    .countdown-section .section-subtitle{color:rgba(255,255,255,.82)}
+    .countdown{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      max-width:780px;
+      margin:auto;
+      border-top:1px solid rgba(255,255,255,.35);
+      border-bottom:1px solid rgba(255,255,255,.35);
+    }
+    .time{
+      text-align:center;
+      padding:30px 8px;
+      border-right:1px solid rgba(255,255,255,.25);
+    }
+    .time:last-child{border-right:0}
+    .time strong{
+      display:block;
+      font-family:"Cormorant Garamond",serif;
+      font-size:3rem;
+      font-weight:400;
+    }
+    .time span{
+      text-transform:uppercase;
+      letter-spacing:.20em;
+      font-size:.63rem;
+    }
+
+    .event-card{
+      max-width:760px;
+      margin:auto;
+      padding:54px 34px;
+      text-align:center;
+      background:#fff;
+      border:1px solid var(--line);
+    }
+    .event-card .mini{font-size:1.6rem;color:var(--green)}
+    .event-card h3{
+      margin:12px 0 5px;
+      font-size:3rem;
+      font-weight:400;
+    }
+    .event-card .venue{
+      font-size:1.05rem;
+      font-weight:500;
+      margin:8px 0 14px;
+    }
+    .event-card p{line-height:1.8;color:var(--muted)}
+    .event-card .btn{color:var(--green-dark);margin-top:12px}
+
+    .gallery-section{padding-left:0;padding-right:0;background:#ece8df}
+    .gallery{
+      width:min(1300px,100%);
+      margin:auto;
+      padding:0 12px;
+      display:grid;
+      grid-template-columns:1.15fr .85fr 1fr;
+      gap:10px;
+    }
+    .gallery img{
+      height:520px;
+      object-fit:cover;
+      object-position:center;
+    }
+    .gallery img:nth-child(2){height:450px;margin-top:70px}
+    .gallery img:nth-child(3){height:590px}
+
+    .story-strip{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      width:min(1100px,100%);
+      margin:10px auto 0;
+      padding:0 12px;
+    }
+    .story-strip img{height:390px;object-fit:cover}
+    .story-strip img:first-child{object-position:center 55%}
+    .story-strip img:last-child{object-position:center 45%}
+
+    .detail-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1px;
+      background:var(--line);
+      max-width:900px;
+      margin:auto;
+    }
+    .detail{
+      background:var(--paper);
+      padding:48px 30px;
+      text-align:center;
+    }
+    .detail h3{
+      font-size:2.2rem;
+      font-weight:400;
+      margin:10px 0;
+    }
+    .detail p{line-height:1.8;color:var(--muted)}
+    .forbidden{
+      display:inline-block;
+      margin-top:8px;
+      padding:8px 14px;
+      border:1px solid var(--line);
+      font-size:.76rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .rsvp{
+      min-height:660px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:#fff;
+      background:
+        linear-gradient(rgba(35,46,34,.58),rgba(35,46,34,.73)),
+        url("images/foto_07.jpeg") center 48% / cover no-repeat;
+    }
+    .rsvp .section-title{color:#fff}
+    .rsvp p{
+      max-width:640px;
+      margin:0 auto 28px;
+      line-height:1.85;
+    }
+    .rsvp-buttons{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    footer{
+      background:var(--green-dark);
+      color:#eef1e8;
+      text-align:center;
+      padding:46px 24px;
+    }
+    footer .names{
+      font-family:"Cormorant Garamond",serif;
+      font-size:2.4rem;
+      margin-bottom:6px;
+    }
+    footer small{opacity:.72;letter-spacing:.14em}
+
+
+    .music-btn{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      z-index:60;
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.55);
+      background:var(--green-dark);
+      color:white;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      box-shadow:0 8px 28px rgba(0,0,0,.22);
+      font-size:1.05rem;
+      transition:.2s ease;
+    }
+    .music-btn:hover{transform:scale(1.05)}
+    .music-btn.playing{font-size:.8rem}
+
+    @media(max-width:800px){
+      .hero{grid-template-columns:1fr}
+      .hero-image{min-height:65svh;order:-1}
+      .hero-copy{padding:64px 24px}
+      section{padding:76px 20px}
+      .countdown{grid-template-columns:repeat(2,1fr)}
+      .time:nth-child(2){border-right:0}
+      .time:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.25)}
+      .gallery{grid-template-columns:1fr 1fr}
+      .gallery img,
+      .gallery img:nth-child(2),
+      .gallery img:nth-child(3){
+        height:350px;
+        margin:0;
+      }
+      .gallery img:nth-child(3){grid-column:1/-1;height:440px}
+      .story-strip{grid-template-columns:1fr}
+      .story-strip img{height:430px}
+      .detail-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body class="locked">
+
+  <div class="opening" id="opening">
+    <div class="opening-card">
+      <div class="eyebrow">Nos casamos</div>
+      <h1>Ramiro<br><span class="amp">&</span><br>Valentina</h1>
+      <div class="date-line">29 · 01 · 2027</div>
+      <button class="btn" id="openInvitation">Abrir invitación</button>
+    </div>
+  </div>
+
+
+  <button class="music-btn" id="musicBtn" aria-label="Pausar o reproducir música" title="Música">♫</button>
+
+  <audio id="weddingMusic" loop preload="auto">
+    <source src="music/perfect-ed-sheeran.mp3" type="audio/mpeg">
+  </audio>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="hero-inner">
+          <div class="eyebrow" style="color:var(--green)">Nuestra boda</div>
+          <h2>Ramiro<br><span class="amp">&</span> Valentina</h2>
+          <div class="ornament"></div>
+          <p class="intro">
+            Después de tantos momentos compartidos, aventuras, risas y sueños,
+            llegó el día de celebrar uno de los capítulos más importantes de nuestra historia.
+            Queremos vivirlo rodeados de las personas que forman parte de nuestra vida.
+          </p>
+          <div class="date-line" style="color:var(--green-dark);margin-bottom:0">
+            Viernes · 29 de enero · 2027
+          </div>
+        </div>
+      </div>
+      <div class="hero-image" aria-label="Ramiro y Valentina"></div>
+    </section>
+
+    <section class="countdown-section">
+      <div class="inner">
+        <h2 class="section-title">Nuestro gran día</h2>
+        <p class="section-subtitle">Cada vez falta menos para celebrar juntos.</p>
+        <div class="countdown">
+          <div class="time"><strong id="days">00</strong><span>Días</span></div>
+          <div class="time"><strong id="hours">00</strong><span>Horas</span></div>
+          <div class="time"><strong id="minutes">00</strong><span>Minutos</span></div>
+          <div class="time"><strong id="seconds">00</strong><span>Segundos</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="inner">
+        <h2 class="section-title">La celebración</h2>
+        <p class="section-subtitle">Te esperamos para compartir una noche inolvidable.</p>
+
+        <article class="event-card">
+          <div class="mini">✦</div>
+          <h3>Fiesta</h3>
+          <div class="venue">Moa's Eventos</div>
+          <p>RP347 Km 2,1<br>El Cadillal, Tucumán</p>
+          <a class="btn"
+             href="https://www.google.com/maps/search/?api=1&query=Moa%27s+Eventos+RP347+Km+2.1+El+Cadillal+Tucuman"
+             target="_blank" rel="noopener">
+             Cómo llegar
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Nuestra historia</h2>
+      <p class="section-subtitle">Un poquito de nosotros y del camino que nos trajo hasta acá.</p>
+
+      <div class="gallery">
+        <img src="images/foto_02.jpeg" alt="Ramiro y Valentina">
+        <img src="images/foto_01.jpeg" alt="Ramiro y Valentina">
+	<img src="images/foto_04.jpeg" alt="Ramiro y Valentina">
+      </div>
+
+      <div class="story-strip">
+        <img src="images/foto_03.jpeg" alt="Ramiro y Valentina">
+        <img src="images/foto_06.jpeg" alt="Ramiro y Valentina">
+      </div>
+    </section>
+
+    <section>
+      <div class="inner">
+        <h2 class="section-title">Algunos detalles</h2>
+        <p class="section-subtitle">Queremos que disfrutes este día tanto como nosotros.</p>
+
+        <div class="detail-grid">
+          <div class="detail">
+            <div>♢</div>
+            <h3>Dress code</h3>
+            <p>Elegante</p>
+            <div class="forbidden">No usar rojo ni blanco</div>
+          </div>
+
+          <div class="detail">
+            <div>♡</div>
+            <h3>Lo más importante</h3>
+            <p>
+              Vení con ganas de celebrar, bailar y compartir con nosotros
+              una noche que queremos recordar para siempre.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rsvp">
+      <div>
+        <div class="eyebrow">Confirmación</div>
+        <h2 class="section-title">¿Nos acompañás?</h2>
+        <p>
+          Nos encantaría contar con vos. Podés confirmar tu asistencia
+          por WhatsApp con cualquiera de estos dos contactos.
+        </p>
+
+        <div class="rsvp-buttons">
+          <a class="btn"
+             target="_blank" rel="noopener"
+             href="https://wa.me/5493858687316?text=Hola%21%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Ramiro%20y%20Valentina%20%F0%9F%A4%8D">
+             Confirmar · 3858687316
+          </a>
+          <a class="btn"
+             target="_blank" rel="noopener"
+             href="https://wa.me/5493012070155?text=Hola%21%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Ramiro%20y%20Valentina%20%F0%9F%A4%8D">
+             Confirmar · 3012070155
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="names">Ramiro & Valentina</div>
+    <small>29 · 01 · 2027</small>
+  </footer>
+
+  <script>
+    const opening = document.getElementById("opening");
+    const weddingMusic = document.getElementById("weddingMusic");
+    const musicBtn = document.getElementById("musicBtn");
+
+    document.getElementById("openInvitation").addEventListener("click", async () => {
+      opening.classList.add("hidden");
+      document.body.classList.remove("locked");
+
+      // Reproducir la canción desde el segundo 20.
+      try {
+        weddingMusic.currentTime = 20;
+        await weddingMusic.play();
+        musicBtn.textContent = "❚❚";
+        musicBtn.classList.add("playing");
+      } catch (e) {
+        musicBtn.textContent = "♫";
+      }
+    });
+
+    musicBtn.addEventListener("click", async () => {
+      if (weddingMusic.paused) {
+        try {
+          // Si todavía no comenzó, iniciar desde el segundo 20.
+          if (weddingMusic.currentTime < 20) {
+            weddingMusic.currentTime = 20;
+          }
+          await weddingMusic.play();
+          musicBtn.textContent = "❚❚";
+          musicBtn.classList.add("playing");
+        } catch (e) {}
+      } else {
+        weddingMusic.pause();
+        musicBtn.textContent = "♫";
+        musicBtn.classList.remove("playing");
+      }
+    });
+
+    // Al no haber horario confirmado todavía, la cuenta regresiva apunta
+    // al inicio del 29 de enero de 2027 (hora Argentina).
+    const weddingDate = new Date("2027-01-29T00:00:00-03:00").getTime();
+
+    function updateCountdown(){
+      const distance = weddingDate - Date.now();
+
+      if(distance <= 0){
+        ["days","hours","minutes","seconds"].forEach(id => {
+          document.getElementById(id).textContent = "00";
+        });
+        return;
+      }
+
+      document.getElementById("days").textContent =
+        String(Math.floor(distance / 86400000)).padStart(2,"0");
+
+      document.getElementById("hours").textContent =
+        String(Math.floor((distance % 86400000) / 3600000)).padStart(2,"0");
+
+      document.getElementById("minutes").textContent =
+        String(Math.floor((distance % 3600000) / 60000)).padStart(2,"0");
+
+      document.getElementById("seconds").textContent =
+        String(Math.floor((distance % 60000) / 1000)).padStart(2,"0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown,1000);
+  </script>
+</body>
+</html>
