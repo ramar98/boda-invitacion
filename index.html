@@ -425,6 +425,185 @@
     .color-dot.burgundy{background:#7A1620}
     .color-dot.rose-red{background:#D94A56}
 
+
+    /* Ornamentación premium azul marino */
+    .corner-flourish{
+      position:absolute;
+      width:180px;
+      height:180px;
+      pointer-events:none;
+      opacity:.28;
+      z-index:0;
+    }
+    .corner-flourish::before,
+    .corner-flourish::after{
+      content:"";
+      position:absolute;
+      border:1px solid rgba(11,31,58,.45);
+      border-radius:50%;
+    }
+    .corner-flourish::before{
+      width:150px;
+      height:70px;
+      left:0;
+      top:30px;
+      transform:rotate(-28deg);
+      border-left-color:transparent;
+      border-bottom-color:transparent;
+    }
+    .corner-flourish::after{
+      width:110px;
+      height:48px;
+      left:28px;
+      top:72px;
+      transform:rotate(22deg);
+      border-right-color:transparent;
+      border-top-color:transparent;
+    }
+    .corner-flourish.top-right{
+      top:26px;
+      right:18px;
+      transform:scaleX(-1);
+    }
+    .corner-flourish.bottom-left{
+      bottom:18px;
+      left:8px;
+      transform:rotate(180deg);
+    }
+
+    .leaf-line{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      margin:8px auto 34px;
+      color:#0B1F3A;
+      opacity:.72;
+      font-family:"Cormorant Garamond",serif;
+      font-size:1.15rem;
+      letter-spacing:.08em;
+    }
+    .leaf-line::before,
+    .leaf-line::after{
+      content:"";
+      width:70px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, #0B1F3A);
+      opacity:.55;
+    }
+    .leaf-line::after{
+      transform:scaleX(-1);
+    }
+
+    .event-card,
+    .detail{
+      box-shadow:0 14px 38px rgba(11,31,58,.05);
+    }
+
+    .event-card::before,
+    .detail::before{
+      content:"";
+      display:block;
+      width:42px;
+      height:1px;
+      background:#0B1F3A;
+      opacity:.45;
+      margin:0 auto 22px;
+    }
+
+    .section-title{
+      position:relative;
+    }
+
+    .section-title::after{
+      content:"";
+      display:block;
+      width:34px;
+      height:1px;
+      background:#0B1F3A;
+      opacity:.45;
+      margin:16px auto 0;
+    }
+
+    .countdown-section .section-title::after,
+    .rsvp .section-title::after{
+      background:#fff;
+      opacity:.6;
+    }
+
+    .hero-copy::before{
+      content:"";
+      position:absolute;
+      width:220px;
+      height:220px;
+      right:30px;
+      top:35px;
+      border:1px solid rgba(11,31,58,.10);
+      border-radius:50%;
+      pointer-events:none;
+    }
+
+    .hero-copy::after{
+      content:"";
+      position:absolute;
+      width:150px;
+      height:150px;
+      left:28px;
+      bottom:35px;
+      border:1px solid rgba(11,31,58,.08);
+      border-radius:50%;
+      pointer-events:none;
+    }
+
+    .gallery-section{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .gallery-section::before{
+      content:"";
+      position:absolute;
+      width:420px;
+      height:420px;
+      left:-170px;
+      top:70px;
+      border:1px solid rgba(11,31,58,.10);
+      border-radius:50%;
+      pointer-events:none;
+    }
+
+    .gallery-section::after{
+      content:"";
+      position:absolute;
+      width:300px;
+      height:300px;
+      right:-120px;
+      bottom:60px;
+      border:1px solid rgba(11,31,58,.10);
+      border-radius:50%;
+      pointer-events:none;
+    }
+
+    @media(max-width:800px){
+      .corner-flourish{
+        width:130px;
+        height:130px;
+        opacity:.22;
+      }
+      .corner-flourish::before{
+        width:110px;
+        height:52px;
+      }
+      .corner-flourish::after{
+        width:82px;
+        height:38px;
+      }
+      .hero-copy::before,
+      .hero-copy::after{
+        display:none;
+      }
+    }
+
     @media(max-width:800px){
       .hero{grid-template-columns:1fr}
       .hero-image{min-height:65svh;order:-1}
@@ -473,6 +652,7 @@
           <div class="eyebrow" style="color:var(--green)">Nuestra boda</div>
           <h2>Ramiro<br><span class="amp">&</span> Valentina</h2>
           <div class="ornament"></div>
+          <div class="leaf-line" aria-hidden="true">❦</div>
           <p class="intro">
             Después de tantos momentos compartidos, aventuras, risas y sueños,
             llegó el día de celebrar uno de los capítulos más importantes de nuestra historia.
@@ -500,6 +680,8 @@
     </section>
 
     <section>
+      <div class="corner-flourish top-right" aria-hidden="true"></div>
+      <div class="corner-flourish bottom-left" aria-hidden="true"></div>
       <div class="inner">
         <h2 class="section-title">La celebración</h2>
         <p class="section-subtitle">Te esperamos para compartir una noche inolvidable.</p>
@@ -536,6 +718,8 @@
     </section>
 
     <section>
+      <div class="corner-flourish top-right" aria-hidden="true"></div>
+      <div class="corner-flourish bottom-left" aria-hidden="true"></div>
       <div class="inner">
         <h2 class="section-title">Algunos detalles</h2>
         <p class="section-subtitle">Queremos que disfrutes este día tanto como nosotros.</p>
