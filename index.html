@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0B1F3A">
   <title>Ramiro & Valentina | Nuestra Boda</title>
-  <meta name="description" content="Invitación a la boda de Ramiro y Valentina - 29 de enero de 2027">
+  <meta name="description" content="Invitación a la boda de Ramiro y Valentina - 9 de enero de 2027">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -93,7 +93,19 @@
       transition:.25s ease;
     }
     .btn:hover{background:var(--green-dark);border-color:var(--green-dark);color:#fff}
-    .opening .btn:hover{background:#fff;color:var(--green-dark);border-color:#fff}
+    .opening .btn{
+      color:#fff;
+      border-color:#fff;
+      background:rgba(255,255,255,.08);
+      font-weight:600;
+      text-shadow:0 1px 8px rgba(0,0,0,.35);
+    }
+    .opening .btn:hover{
+      background:#fff;
+      color:var(--green-dark);
+      border-color:#fff;
+      text-shadow:none;
+    }
 
     .hero{
       min-height:100svh;
@@ -324,6 +336,95 @@
     .music-btn:hover{transform:scale(1.05)}
     .music-btn.playing{font-size:.8rem}
 
+
+    /* Detalles lineales decorativos */
+    main > section:not(.countdown-section):not(.gallery-section):not(.rsvp){
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+    }
+    main > section:not(.countdown-section):not(.gallery-section):not(.rsvp)::before,
+    main > section:not(.countdown-section):not(.gallery-section):not(.rsvp)::after{
+      content:"";
+      position:absolute;
+      pointer-events:none;
+      z-index:-1;
+      opacity:.5;
+    }
+    main > section:not(.countdown-section):not(.gallery-section):not(.rsvp)::before{
+      width:260px;
+      height:260px;
+      top:34px;
+      left:-85px;
+      border-top:1px solid rgba(11,31,58,.22);
+      border-right:1px solid rgba(11,31,58,.18);
+      transform:rotate(18deg);
+    }
+    main > section:not(.countdown-section):not(.gallery-section):not(.rsvp)::after{
+      width:330px;
+      height:330px;
+      right:-120px;
+      bottom:28px;
+      border-left:1px solid rgba(11,31,58,.18);
+      border-bottom:1px solid rgba(11,31,58,.22);
+      transform:rotate(-16deg);
+    }
+    .inner,.hero-copy,.event-card,.detail-grid{
+      position:relative;
+      z-index:1;
+    }
+    .linear-accent{
+      width:min(520px,78vw);
+      height:18px;
+      margin:24px auto 40px;
+      position:relative;
+    }
+    .linear-accent::before,
+    .linear-accent::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      width:44%;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(11,31,58,.55));
+    }
+    .linear-accent::before{left:0}
+    .linear-accent::after{
+      right:0;
+      transform:scaleX(-1);
+    }
+    .linear-accent span{
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:8px;
+      height:8px;
+      border:1px solid #0B1F3A;
+      transform:translate(-50%,-50%) rotate(45deg);
+      background:#fff;
+    }
+    .color-dots{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      margin:16px 0 4px;
+    }
+    .color-dot{
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      display:inline-block;
+      box-shadow:0 0 0 1px rgba(11,31,58,.18), 0 3px 10px rgba(11,31,58,.08);
+    }
+    .color-dot.white{
+      background:#fff;
+      border:1px solid rgba(11,31,58,.35);
+    }
+    .color-dot.red{background:#B3202A}
+    .color-dot.burgundy{background:#7A1620}
+    .color-dot.rose-red{background:#D94A56}
+
     @media(max-width:800px){
       .hero{grid-template-columns:1fr}
       .hero-image{min-height:65svh;order:-1}
@@ -353,7 +454,7 @@
     <div class="opening-card">
       <div class="eyebrow">Nos casamos</div>
       <h1>Ramiro<br><span class="amp">&</span><br>Valentina</h1>
-      <div class="date-line">29 · 01 · 2027</div>
+      <div class="date-line">09 · 01 · 2027</div>
       <button class="btn" id="openInvitation">Abrir invitación</button>
     </div>
   </div>
@@ -402,6 +503,7 @@
       <div class="inner">
         <h2 class="section-title">La celebración</h2>
         <p class="section-subtitle">Te esperamos para compartir una noche inolvidable.</p>
+        <div class="linear-accent" aria-hidden="true"><span></span></div>
 
         <article class="event-card">
           <div class="mini">✦</div>
@@ -437,13 +539,20 @@
       <div class="inner">
         <h2 class="section-title">Algunos detalles</h2>
         <p class="section-subtitle">Queremos que disfrutes este día tanto como nosotros.</p>
+        <div class="linear-accent" aria-hidden="true"><span></span></div>
 
         <div class="detail-grid">
           <div class="detail">
             <div>♢</div>
-            <h3>Dress code</h3>
+            <h3>Dress Code</h3>
             <p>Elegante</p>
-            <div class="forbidden">No usar rojo ni blanco</div>
+            <p style="margin-bottom:8px;"><strong>Colores no permitidos:</strong><br>Blanco y rojo (en todas sus gamas)</p>
+            <div class="color-dots" aria-label="Colores no permitidos">
+              <span class="color-dot white" title="Blanco"></span>
+              <span class="color-dot rose-red" title="Rojo claro"></span>
+              <span class="color-dot red" title="Rojo"></span>
+              <span class="color-dot burgundy" title="Bordó / rojo oscuro"></span>
+            </div>
           </div>
 
           <div class="detail">
@@ -485,7 +594,7 @@
 
   <footer>
     <div class="names">Ramiro & Valentina</div>
-    <small>29 · 01 · 2027</small>
+    <small>09 · 01 · 2027</small>
   </footer>
 
   <script>
@@ -527,8 +636,8 @@
     });
 
     // Al no haber horario confirmado todavía, la cuenta regresiva apunta
-    // al inicio del 29 de enero de 2027 (hora Argentina).
-    const weddingDate = new Date("2027-01-29T00:00:00-03:00").getTime();
+    // al inicio del 9 de enero de 2027 (hora Argentina).
+    const weddingDate = new Date("2027-01-09T00:00:00-03:00").getTime();
 
     function updateCountdown(){
       const distance = weddingDate - Date.now();
